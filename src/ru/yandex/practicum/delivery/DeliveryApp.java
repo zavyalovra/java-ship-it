@@ -14,24 +14,6 @@ public class DeliveryApp {
 
     public static void main(String[] args) {
 
-        StandardParcel p1 = new StandardParcel("Посылка 1", 10, "Город 1", 1);
-        allParcels.add(p1);
-        standardBox.addParcel(p1);
-        StandardParcel p2 = new StandardParcel("Посылка 2", 20, "Город 2", 5);
-        allParcels.add(p2);
-        standardBox.addParcel(p2);
-        StandardParcel p3 = new StandardParcel("Посылка 3", 15, "Город 3", 2);
-        allParcels.add(p3);
-        standardBox.addParcel(p3);
-
-        allParcels.add(new FragileParcel("Посылка хрупкая 1", 5, "Город 4", 8));
-        allParcels.add(new FragileParcel("Посылка хрупкая 2", 15, "Город 5", 10));
-        allParcels.add(new FragileParcel("Посылка хрупкая 3", 10, "Город 6", 7));
-
-        allParcels.add(new PerishableParcel("Посылка скоропортящаяся 1", 2, "Город 7", 4, 5));
-        allParcels.add(new PerishableParcel("Посылка скоропортящаяся 2", 5, "Город 8", 15, 3));
-        allParcels.add(new PerishableParcel("Посылка скоропортящаяся 3", 1, "Город 9", 17, 2));
-
         boolean running = true;
         while (running) {
             showMenu();
