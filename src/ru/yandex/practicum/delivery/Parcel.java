@@ -1,7 +1,7 @@
 package ru.yandex.practicum.delivery;
 
 public abstract class Parcel {
-    static final int STANDART_PARCEL_PRICE = 2;
+    static final int STANDARD_PARCEL_PRICE = 2;
     static final int PERISHABLE_PARCEL_PRICE = 3;
     static final int FRAGILE_PARCEL_PRICE = 4;
 
@@ -18,11 +18,11 @@ public abstract class Parcel {
     }
 
     public void packageItem() {
-        System.out.println("Посылка <<" + description + ">> упакована");
+        System.out.println("Посылка <<" + getDescription() + ">> упакована");
     }
 
     public void deliver() {
-        System.out.println("Посылка <<" + description + ">> доставлена по адресу " + deliveryAddress);
+        System.out.println("Посылка <<" + getDescription() + ">> доставлена по адресу " + getDeliveryAddress());
     }
 
     public abstract double calculateDeliveryCost();
@@ -31,31 +31,15 @@ public abstract class Parcel {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getWeight() {
         return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
     public int getSendDay() {
         return sendDay;
-    }
-
-    public void setSendDay(int sendDay) {
-        this.sendDay = sendDay;
     }
 }

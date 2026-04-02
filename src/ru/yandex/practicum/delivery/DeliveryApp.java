@@ -1,6 +1,5 @@
 package ru.yandex.practicum.delivery;
 
-import javax.sound.midi.Track;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,10 +7,10 @@ import java.util.Scanner;
 public class DeliveryApp {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static List<Parcel> allParcels = new ArrayList<>();
-    private static ParcelBox standardBox = new ParcelBox(100);
-    private static ParcelBox fragileBox = new ParcelBox(10);
-    private static ParcelBox perishableBox = new ParcelBox(10);
+    private static final List<Parcel> allParcels = new ArrayList<>();
+    private static final ParcelBox<StandardParcel> standardBox = new ParcelBox<>(100);
+    private static final ParcelBox<FragileParcel> fragileBox = new ParcelBox<>(10);
+    private static final ParcelBox<PerishableParcel> perishableBox = new ParcelBox<>(10);
 
     public static void main(String[] args) {
 
@@ -21,7 +20,9 @@ public class DeliveryApp {
         StandardParcel p2 = new StandardParcel("Посылка 2", 20, "Город 2", 5);
         allParcels.add(p2);
         standardBox.addParcel(p2);
-        allParcels.add(new StandardParcel("Посылка 3", 15, "Город 3", 2));
+        StandardParcel p3 = new StandardParcel("Посылка 3", 15, "Город 3", 2);
+        allParcels.add(p3);
+        standardBox.addParcel(p3);
 
         allParcels.add(new FragileParcel("Посылка хрупкая 1", 5, "Город 4", 8));
         allParcels.add(new FragileParcel("Посылка хрупкая 2", 15, "Город 5", 10));
