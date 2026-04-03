@@ -8,6 +8,7 @@ public class DeliveryApp {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Parcel> allParcels = new ArrayList<>();
+    private static final List<Trackable> trackableParcels = new ArrayList<>();
     private static final ParcelBox<StandardParcel> standardBox = new ParcelBox<>(100);
     private static final ParcelBox<FragileParcel> fragileBox = new ParcelBox<>(10);
     private static final ParcelBox<PerishableParcel> perishableBox = new ParcelBox<>(10);
@@ -82,6 +83,7 @@ public class DeliveryApp {
                 System.out.println("Оформляю хрупкую посылку");
                 FragileParcel fragileParcel = new FragileParcel(description, weight, deliveryAddress, sendDay);
                 allParcels.add(fragileParcel);
+                trackableParcels.add(fragileParcel);
                 fragileBox.addParcel(fragileParcel);
                 break;
             case 3:
@@ -119,10 +121,8 @@ public class DeliveryApp {
         System.out.print("Введите текущее местоположение: ");
         String newLocation = scanner.nextLine();
 
-        for (Parcel parcel : allParcels) {
-            if (parcel instanceof Trackable trackableParcel) {
-                trackableParcel.reportStatus(newLocation);
-            }
+        for (Trackable trackableParcel : trackableParcels) {
+            trackableParcel.reportStatus(newLocation);
         }
     }
 

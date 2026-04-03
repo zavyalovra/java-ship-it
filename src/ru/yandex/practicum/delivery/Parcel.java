@@ -42,4 +42,9 @@ public abstract class Parcel {
     public int getSendDay() {
         return sendDay;
     }
+
+    @Override
+    public String toString() {
+        return getDescription();
+    }
 }
