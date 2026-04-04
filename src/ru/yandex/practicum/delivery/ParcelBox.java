@@ -11,7 +11,7 @@ public class ParcelBox<T extends Parcel> {
         this.maxBoxSize = maxBoxSize;
     }
 
-    public void addParcel(T parcel) {
+    public boolean addParcel(T parcel) {
         int currentBoxSize = 0;
 
         for (Parcel p : parcels) {
@@ -19,11 +19,11 @@ public class ParcelBox<T extends Parcel> {
         }
 
         if (currentBoxSize + parcel.getWeight() > getMaxBoxSize()) {
-            System.out.println("В коробке для посылок закончилось место");
-            return;
+            return false;
         }
 
         parcels.add(parcel);
+        return true;
     }
 
     public List<T> getAllParcels() {

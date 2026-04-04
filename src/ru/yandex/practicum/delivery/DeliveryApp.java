@@ -76,15 +76,21 @@ public class DeliveryApp {
             case 1:
                 System.out.println("Оформляю стандартную посылку");
                 StandardParcel standardParcel = new StandardParcel(description, weight, deliveryAddress, sendDay);
-                allParcels.add(standardParcel);
-                standardBox.addParcel(standardParcel);
+                if (standardBox.addParcel(standardParcel)) {
+                    allParcels.add(standardParcel);
+                } else {
+                    System.out.println("В коробке для посылок закончилось место");
+                }
                 break;
             case 2:
                 System.out.println("Оформляю хрупкую посылку");
                 FragileParcel fragileParcel = new FragileParcel(description, weight, deliveryAddress, sendDay);
-                allParcels.add(fragileParcel);
-                trackableParcels.add(fragileParcel);
-                fragileBox.addParcel(fragileParcel);
+                if (fragileBox.addParcel(fragileParcel)) {
+                    allParcels.add(fragileParcel);
+                    trackableParcels.add(fragileParcel);
+                } else {
+                    System.out.println("В коробке для посылок закончилось место");
+                }
                 break;
             case 3:
                 System.out.println("Укажите срок годности посылки, в днях: ");
@@ -92,8 +98,11 @@ public class DeliveryApp {
                 System.out.println("Оформляю скоропортящуюся посылку");
                 PerishableParcel perishableParcel = new PerishableParcel(description, weight, deliveryAddress,
                                                                          sendDay, timeToLive);
-                allParcels.add(perishableParcel);
-                perishableBox.addParcel(perishableParcel);
+                if (perishableBox.addParcel(perishableParcel)) {
+                    allParcels.add(perishableParcel);
+                } else {
+                    System.out.println("В коробке для посылок закончилось место");
+                }
                 break;
             default:
                 System.out.println("Неверный выбор.");
